@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "portfolio-web-frontend-app": {
+    "front-end-angular": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -73,10 +73,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "portfolio-web-frontend-app:build:production"
+              "browserTarget": "front-end-angular:build:production"
             },
             "development": {
-              "browserTarget": "portfolio-web-frontend-app:build:development"
+              "browserTarget": "front-end-angular:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -84,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "portfolio-web-frontend-app:build"
+            "browserTarget": "front-end-angular:build"
           }
         },
         "test": {
@@ -107,5 +107,5 @@
       }
     }
   },
-  "defaultProject": "portfolio-web-frontend-app"
+  "defaultProject": "front-end-angular"
 }
