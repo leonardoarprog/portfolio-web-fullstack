@@ -1,0 +1,30 @@
+<div *ngIf="portfolio" class="banner d-flex align-items-end" id="banner-portfolio" [style.background]="'url(' + portfolio?.url_img_bg + ')'"> <img id="profile-picture" [src]="portfolio?.url_foto"  width="190" height="190" class="rounded-circle border border-white border-5 img-fluid d-block mx-auto mb-n6" alt="Nombre y Apellido" title="Nombre y Apellido"/> <a class="user-logged-in-tools btn-edit btn btn-danger btn-sm rounded-circle position-absolute start-50 translate-middle" href="#"></a> </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-10 offset-lg-1">
+      <div class="text-center mb-5">
+        <div class="d-inline-block mb-4"> <a class="user-logged-in-tools btn-edit btn btn-danger btn-sm rounded-circle mb-3" href="#"></a>
+          <h1 id="nombre-apellido" class="display-4 text-uppercase text-center lh-1 mb-0"><span class="fw-bold">{{portfolio?.nombre}}</span> {{portfolio?.apellido}}</h1>
+          <table id="sub-nombre-apellido" class="w-100 text-uppercase lh-1">
+            <tbody>
+              <tr *ngIf="portfolio">
+                <td *ngFor="let letter of portfolio?.posicion | splitStringArray">{{letter}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <h5><span class="offset-md-1 d-block">Sobre mi</span></h5>
+      <div class="user-logged-in-tools">
+        <div class="col-md-10 offset-md-1 text-end mt-3"><a class="btn-add btn btn-info btn-lg rounded-circle " href="#"></a> </div>
+        <hr class="col-sm-12 h-2">
+      </div>
+      <div class="row">
+        <div class="col-md-10 offset-md-1">
+          <div class="user-logged-in-tools clearfix text-end mt-2 mb-n5"><a class="btn-edit btn btn-danger btn-sm rounded-circle ms-2" href="#"></a><a class="btn-delete btn btn-danger btn-sm rounded-circle ms-2" href="#"></a></div>
+          <p class="fw-light mb-5 mt-5 text-justify">{{portfolio?.info_profesional}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,204 @@
+@charset "utf-8";
+/* CSS Document */
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;600;700&display=swap');
+
+body {
+    color: #5a7d8b;
+    font-family: 'Epilogue', sans-serif;
+}
+
+.footer {
+    background-color: #dbeaf1;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.fw-semibold {
+    font-weight: 600 !important;
+}
+
+#banner-portfolio {
+    /* background-image: url("../img/portfolio-bg-1920px.webp");*/
+    background-size: cover !important;
+    min-height: 440px;
+    margin-bottom: 7rem !important;
+}
+
+.mb-n6 {
+    margin-bottom: -4rem !important;
+}
+
+.h-2 {
+    height: 2px !important;
+}
+
+.user-logged-in-tools {
+    display: none;
+}
+
+.btn-danger,
+.btn-danger:hover,
+.btn-danger:active,
+.btn-danger:visited,
+.btn-info,
+.btn-info:hover,
+.btn-info:active,
+.btn-info:visited {
+    color: #fff;
+}
+
+div#navbarNav a.btn.btn-danger.btn-sm {
+    margin-left: 15px;
+}
+
+.navbar-dark .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0);
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.0rem;
+}
+
+.btn-edit::before {
+    font-family: "Font Awesome 5 Pro";
+    font-weight: 900;
+    content: "\f303";
+    font-size: 18px;
+}
+
+.btn-add::before {
+    font-family: "Font Awesome 5 Pro";
+    font-weight: 900;
+    content: "\f067";
+    font-size: 24px;
+}
+
+.btn-delete::before {
+    font-family: "Font Awesome 5 Pro";
+    font-weight: 900;
+    content: "\f2ed";
+    font-size: 18px;
+}
+
+h1#nombre-apellido::before {
+    font-family: "Font Awesome 5 Pro";
+    font-weight: 900;
+    content: "\f054";
+    font-size: calc(1.425rem + 1.75vw);
+    color: #0db5d3;
+    padding-right: 7px;
+}
+
+table#sub-nombre-apellido tbody tr::before {
+    content: "\00a0\00a0\00a0";
+    font-size: calc(0.85rem + 1.75vw);
+}
+
+table#sub-nombre-apellido {
+    font-size: calc(1.15rem + 0.6vw);
+    font-weight: 600;
+    color: #b8c9d0;
+}
+
+h5 {
+    background-color: #dee5e8;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: calc(0.825rem + 0.75vw);
+    line-height: calc(1.625rem + 0.75vw);
+    letter-spacing: 5px;
+    clear: both;
+}
+
+h5::before {
+    content: "\00a0";
+    width: 17px;
+    float: left;
+    background: linear-gradient(#0db5d3, #0db5d3);
+}
+
+/*#chart {
+    max-width: 760px;
+    margin: 0px auto;
+    opacity: 0.9;
+}*/
+.apexcharts-datalabel-value {
+    fill: #5a7d8b;
+}
+
+/*.apexcharts-radialbar-area {
+
+}*/
+
+.apexcharts-canvas svg {
+    overflow: visible;
+}
+
+.apexcharts-canvas svg foreignObject {
+    overflow: visible;
+}
+
+hr.separator:last-child {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    a.navbar-brand img {
+        width: 175px;
+        height: auto;
+    }
+
+    .navbar-nav {
+        display: inline-flex;
+        flex-direction: row;
+    }
+
+    div#navbarNav ul.navbar-nav li.nav-item a.nav-link {
+        padding-right: 12px;
+    }
+
+    div#navbarNav a.btn.btn-danger.btn-sm {
+        float: right;
+        margin-top: 4px;
+    }
+
+    #banner-portfolio {
+        min-height: 250px;
+    }
+
+    div#banner-portfolio img {
+        width: 150px;
+    }
+
+    div#banner-portfolio a.btn-edit {
+        transform: translate(-50%, 15%) !important;
+    }
+
+    .display-4 {
+        font-size: calc(1.375rem + 2.7vw);
+    }
+
+    table#sub-nombre-apellido {
+        font-size: calc(1rem + 0.6vw);
+    }
+
+    table#sub-nombre-apellido tbody tr td {
+        letter-spacing: -1px;
+    }
+
+    table#sub-nombre-apellido tbody tr::before {
+        content: "\00a0\00a0\00a0";
+        font-size: calc(1.60rem + 1.75vw);
+    }
+
+    h5::before {
+        margin-right: 12px;
+        width: 12px;
+    }
+
+    .text-justify {
+        text-align: left;
+    }
+}
