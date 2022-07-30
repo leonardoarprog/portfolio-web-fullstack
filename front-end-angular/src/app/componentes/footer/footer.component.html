@@ -1,17 +1,43 @@
+<div *ngIf="router.url !== '/'">
 <div class="footer mt-5 pt-5 pb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 offset-lg-1 text-center">        
+      <!--  <a *ngIf="isLogged" class="user-logged-in-tools btn-edit btn btn-danger btn-sm rounded-circle mb-3"   [routerLink]="['', { outlets: { 'modal': ['editar_datos_personales'] }}]" ></a> -->
+    
+          <div *ngIf="datosFooter">
+
+          <ul class="nav justify-content-center">
+            <li *ngIf="datosFooter[0] !== null" class="nav-item"> <a class="nav-link link-secondary" href="mailto:{{datosFooter[0]}}"><small><i class="far fa-envelope me-2"></i> {{datosFooter[0]}}</small></a> </li>
+            <div *ngIf="datosFooter[0] !== null"class="vr d-none d-sm-block">&nbsp;</div>
+            <li *ngIf="datosFooter[1] !== null" class="nav-item"> <a class="nav-link link-secondary" href="http://{{datosFooter[1]}}" target="_new"><small><i class="fas fa-code-branch me-2"></i> {{datosFooter[1]}}</small></a> </li>
+          </ul>
+          <ul class="nav justify-content-center mt-3">
+            <li *ngIf="datosFooter[3] !== null" class="nav-item"> <a class="nav-link link-secondary" href="http://{{datosFooter[3]}}"><i class="fab fa-facebook fa-lg"></i></a> </li>
+            <li *ngIf="datosFooter[2] !== null" class="nav-item"> <a class="nav-link link-secondary" href="http://{{datosFooter[2]}}"><i class="fab fa-twitter fa-lg"></i></a> </li>
+          </ul>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div *ngIf="router.url === '/'">
+  <div class="footer mt-5 pt-5 pb-5">
     <div class="container">
       <div class="row">
         <div class="col-lg-10 offset-lg-1">
           <ul class="nav justify-content-center">
-            <li class="nav-item"> <a class="nav-link link-secondary" href="#"><small><i class="far fa-envelope"></i> yoprogramoar@gmail.com</small></a> </li>
+            <li class="nav-item"> <a class="nav-link link-secondary" href="https://www.argentina.gob.ar/produccion/transformacion-digital-y-economia-del-conocimiento/argentina-programa"><small><i class="far fa-browser me-2"></i>Argentina Programa</small></a> </li>
             <div class="vr d-none d-sm-block">&nbsp;</div>
-            <li class="nav-item"> <a class="nav-link link-secondary" href="#"><small><i class="fas fa-code-branch"></i> github.com/leonardoarprog</small></a> </li>
-          </ul>
-          <ul class="nav justify-content-center mt-3">
-            <li class="nav-item"> <a class="nav-link link-secondary" href="#"><i class="fab fa-facebook fa-lg"></i></a> </li>
-            <li class="nav-item"> <a class="nav-link link-secondary" href="#"><i class="fab fa-twitter fa-lg"></i></a> </li>
+            <li class="nav-item"> <a class="nav-link link-secondary" href="http://www.yoprogramo.org.ar/" target="_new"><small><i class="fas fa-brackets-curly me-2"> </i> #YoProgramo</small></a> </li>
           </ul>
         </div>
       </div>
     </div>
   </div>
+
+</div>

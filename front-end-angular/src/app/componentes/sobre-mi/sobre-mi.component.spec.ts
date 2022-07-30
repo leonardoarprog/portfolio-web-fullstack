@@ -22,4 +22,5 @@ describe('SobreMiComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
 });

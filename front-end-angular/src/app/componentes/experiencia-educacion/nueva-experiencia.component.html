@@ -1,0 +1,70 @@
+
+<app-modal>
+    <div modal-header>
+        <p class="lead text-uppercase fw-semibold mb-0 lh-1"><i class="fas fa-chevron-right text-info pe-1"></i>NUEVA EXPERIENCIA LABORAL
+        </p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mt-4 mx-auto">
+            <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
+                <div class="mb-4">
+                    <label class="form-label" for="tipoEmpleo">Tipo de empleo</label>
+
+                    <select class="form-select" name="tipoEmpleo" [(ngModel)]="tipoEmpleo">
+                        <option [ngValue]="item.id" *ngFor="let item of formTiposEmpleo">{{item.nombreTipoEmpleo}}</option>
+                    </select>
+
+
+                </div>
+                <div class="mb-4">
+                    <label class="form-label" for="nombreEmpresa">Nombre de la empresa</label>
+                    <input type="text" class="form-control" id="nombreEmpresa" name="nombreEmpresa"
+                    [(ngModel)]="nombreEmpresa" required>
+                </div>
+ 
+
+                <div class="form-group form-check mt-4 mb-4">
+                    <input type="checkbox" id="esTrabajoActual" class="form-check-input" [(ngModel)]="esTrabajoActual" name="esTrabajoActual"/>
+                    <label class="form-label" for="esTrabajoActual" class="form-check-label">Es trabajo actual</label>
+                   
+                </div>
+
+
+
+
+                <div class="mb-4">
+                    <label class="form-label"  for="fechaIngreso">Fecha ingreso</label>
+                    <input type="date" class="form-control" id="fechaIngreso" name="fechaIngreso"
+                    [(ngModel)]="fechaIngreso" required>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label" for="fechaEgreso">Fecha egreso</label>
+                    <input type="date" class="form-control" id="fechaEgreso" name="fechaEgreso"
+                    [(ngModel)]="fechaEgreso" [disabled]="esTrabajoActual === true" required>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label" for="puesto">Puesto</label>
+                    <input type="text" class="form-control" id="puesto" name="puesto"
+                    [(ngModel)]="puesto" required>
+                </div>
+      
+                <div class="mb-4">
+                <label class="form-label" for="descripcion" class="form-label">Descripción</label>
+                <textarea [(ngModel)]="descripcion" class="form-control" id="descripcion" name="descripcion"  maxlength="250" rows="3" required></textarea>
+            </div>
+
+                <div class="mb-4">
+                    <label class="form-label" for="isologoEmpresa">Isologo de la empresa (Máx. 500KB)</label>
+                    <input type="file" accept="image/*"  [(ngModel)]="file" id="isologoEmpresa" name="isologoEmpresa" class="form-control mb-3" (change)="onImagenUpload($event)" required>
+                </div>
+
+
+                <div class="mb-4 pt-1">
+                    <button class="btn btn-primary btn-block" [disabled]="!f.valid">
+                        <i class="fas fa-pencil-alt"> </i> Crear </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</app-modal>

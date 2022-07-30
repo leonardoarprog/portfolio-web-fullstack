@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  <div *ngIf="info.token; else loggedOut">
+
+    <div class="row">
+      <div class="col-md-10 offset-md-1 text-center">
+        <img class="img-fluid mt-5 mb-5" src="../assets/img/isologo-arg-programa-xl.webp" alt="Argentina Programa | #YoProgramo"
+        title="Argentina Programa | #YoProgramo" width="500" height="148">
+        <h1  class="h2 text-center lh-1 mb-0 mt-2"><span class="fw-bold">#YoPrograno</span></h1>
+        <p class="h2 fw-light">Proyecto Integrador Portfolio Web Full Stack</p>
+        <button type="button" class="btn btn-lg btn-secondary mt-5"  (click)="verMiPortfolio()">Ver Mi Portfolio</button>
+      </div>
+</div>
+
+  </div>
+  <ng-template #loggedOut>
+      <div class="row">
+        <div class="col-md-10 offset-md-1 text-center">
+          <img class="img-fluid mt-5 mb-5" src="../assets/img/isologo-arg-programa-xl.webp" alt="Argentina Programa | #YoProgramo"
+          title="Argentina Programa | #YoProgramo" width="500" height="148">
+          <h1  class="h2 text-center lh-1 mb-0 mt-2"><span class="fw-bold">#YoPrograno</span></h1>
+          <p class="h2 fw-light">Proyecto Integrador Portfolio Web Full Stack</p>
+          <a type="button" class="btn btn-lg btn-secondary mt-5" [routerLink]="['', { outlets: { 'modal': ['login'] }}]">Iniciar sesión</a>
+        </div>
+</div>
+
+  </ng-template>
+</div>

@@ -2,14 +2,20 @@
   <div class="container-fluid container-xl">
     <div class="row">
       <div class="col-lg-12">
-        <nav id="navbar-portfolio" class="navbar navbar-expand-sm pt-md-4"> <a class="navbar-brand" href="index.html">
+        <nav id="navbar-portfolio" class="navbar navbar-expand-sm pt-md-4"> <a class="navbar-brand" (click)="irInicio()">
             <img src="../assets/img/isologo-arg-programa.webp" alt="Argentina Programa | #YoProgramo"
               title="Argentina Programa | #YoProgramo" width="363" height="50"> </a>
           <button class="navbar-toggler link-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><i
               class="fas fa-ellipsis-v"></i></button>
-          <div class="collapse navbar-collapse justify-content-end" id="navbarNav"> <a class="btn btn-danger btn-sm"><i
-                class="fas fa-sign-in-alt"></i> <small class="fw-bold"> LOGIN</small></a> </div>
+          <div *ngIf="isLogged; else loggedOut" (click)="onLogOut()"
+            class="collapse navbar-collapse justify-content-end" id="navbarNav"> <a class="btn btn-danger btn-sm"><i
+                class="fas fa-sign-out-alt"></i> <small class="fw-bold"> LOGOUT </small></a> </div>
+          <ng-template #loggedOut>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav"> <a class="btn btn-danger btn-sm"
+                [routerLink]="['', { outlets: { 'modal': ['login'] }}]"><i class="fas fa-sign-in-alt"></i> <small
+                  class="fw-bold"> LOGIN </small></a> </div>
+          </ng-template>
         </nav>
       </div>
     </div>

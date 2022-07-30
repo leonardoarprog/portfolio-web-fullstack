@@ -1,0 +1,115 @@
+<app-modal>
+    <div modal-header>
+        <p class="lead text-uppercase fw-semibold mb-0 lh-1"><i class="fas fa-chevron-right text-info pe-1"></i>EDITAR DATOS PERSONALES
+        </p>
+    </div>
+    <div class="row" *ngIf="sobreMi">
+        <div class="col-md-6 mt-4 mx-auto">
+            <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
+                <div class="mb-4">
+                    <label class="form-label" for="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="sobreMi.nombre"
+                        required placeholder="Completar">
+                </div>
+                <div class="mb-4">
+                    <label class="form-label" for="apellido">Apellido</label>
+                    <input type="text" class="form-control" id="apellido" name="apellido" [(ngModel)]="sobreMi.apellido"
+                        required placeholder="Completar">
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label" for="fechaNacimiento">Fecha de nacimiento</label>
+                    <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento"
+                        [(ngModel)]="sobreMi.fechaNacimiento" required>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label" for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" [(ngModel)]="sobreMi.email"
+                        required placeholder="Completar">
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label" for="direccion">Dirección</label>
+                    <input type="text" class="form-control" id="direccion" name="direccion"
+                        [(ngModel)]="sobreMi.direccion" required placeholder="Completar">
+                </div>
+
+
+                <div class="mb-4">
+                    <label class="form-label" for="pais">País</label>
+                    <select class="form-select" name="pais" [compareWith]="compareObjects"
+                        [(ngModel)]="sobreMi.ubicacion.pais" #pais="ngModel" (ngModelChange)="obtenerProvincias();"
+                        required>
+                        <option *ngFor="let pais of paises" [ngValue]="pais">
+                            {{pais.nombrePais}}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label" for="provincia">Provincia</label>
+                    <select class="form-select" name="provincia" [compareWith]="compareObjects"
+                        [(ngModel)]="sobreMi.ubicacion.provincia" (ngModelChange)="obtenerLocalidades()" #provincia="ngModel"
+                        required>
+                        <option [ngValue]=null>
+                            Seleccione una provincia.
+                        </option>
+                        <option *ngFor="let provincia of provincias" [ngValue]="provincia">
+                            {{provincia.nombreProvincia}}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label" for="localidad">Localidad</label>
+                    <select class="form-select" name="localidad" [compareWith]="compareObjects"
+                        [(ngModel)]="sobreMi.ubicacion.localidad" #localidad="ngModel" required>
+                        <option [ngValue]=null>
+                            Seleccione una localidad.
+                        </option>
+                        <option *ngFor="let localidad of localidades" [ngValue]="localidad">
+                            {{localidad.nombreLocalidad}}
+                        </option>
+                    </select>
+                </div>
+
+
+                <div class="mb-4">
+                    <label class="form-label" for="posicionLaboral">Posición laboral</label>
+                    <input type="text" class="form-control" id="posicionLaboral" name="posicionLaboral"
+                        [(ngModel)]="sobreMi.posicionLaboral" required placeholder="Completar">
+                </div>
+
+                <div class="mb-4">
+                    <label for="sobreMi" class="form-label">Sobre mi</label>
+                    <textarea [(ngModel)]="sobreMi.sobreMi" class="form-control" id="sobreMi" name="sobreMi" rows="3"
+                        maxlength="250" placeholder="Completar"></textarea>
+                </div>
+
+                 <div class="mb-4">
+                    <label class="form-label" for="urlRepositorio">URL repositorio</label>
+                    <input type="text" class="form-control" id="urlRepositorio" name="urlRepositorio"
+                        [(ngModel)]="sobreMi.urlRepositorio" required placeholder="Completar">
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label" for="urlFacebook">URL Facebook</label>
+                    <input type="text" class="form-control" id="urlFacebook" name="urlFacebook"
+                        [(ngModel)]="sobreMi.urlFacebook" required placeholder="Completar">
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label" for="urlTwitter">URL Twitter</label>
+                    <input type="text" class="form-control" id="urlTwitter" name="urlTwitter"
+                        [(ngModel)]="sobreMi.urlTwitter" required placeholder="Completar">
+                </div>
+
+                <div class="mb-4 pt-1">
+                    <button class="btn btn-primary btn-block" [disabled]="!f.valid">
+                        <i class="fas fa-pencil-alt"></i> Actualizar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</app-modal>

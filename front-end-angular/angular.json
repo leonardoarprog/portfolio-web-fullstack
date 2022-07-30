@@ -22,6 +22,7 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+            "aot": false,
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -29,6 +30,7 @@
             "styles": [
               "src/assets/css/bootstrap.css",
               "src/assets/css/fontawesome.all.min.css",
+              "node_modules/ngx-toastr/toastr.css",
               "src/assets/css/estilo.css"
             ],
             "scripts": [

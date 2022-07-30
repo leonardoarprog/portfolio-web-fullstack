@@ -1,0 +1,17 @@
+<app-modal>
+    <div modal-header>
+        <p class="lead text-uppercase fw-semibold mb-0 lh-1"><i class="fas fa-chevron-right text-info pe-1"></i>EDITAR IMAGEN
+        </p>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mt-4 mx-auto">
+            <form #f="ngForm">
+                <div class="mb-4">
+                    <label class="form-label" for="file">(Máx. 500KB)</label>
+                    <input type="file" [(ngModel)]="uploadedImagen" name="file" id="file" class="form-control mb-3" (change)="onImagenUpload($event)" accept="image/*" required>
+                    <input type="button" (click)="uploadImagen()" value="Subir imagen" class="btn btn-primary btn-block" [disabled]="!f.valid">
+                </div>
+            </form>
+        </div>
+    </div>
+</app-modal>

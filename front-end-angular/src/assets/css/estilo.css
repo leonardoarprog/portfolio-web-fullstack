@@ -7,6 +7,28 @@ body {
     font-family: 'Epilogue', sans-serif;
 }
 
+.form-control::-webkit-input-placeholder {
+    opacity: 0.5;
+  }
+  .form-control:-moz-placeholder {
+    opacity: 0.5;
+  }
+  .form-control::-moz-placeholder {
+    opacity: 0.5;
+  }
+  .form-control::placeholder {
+    opacity: 0.5;
+  }
+  .form-control:-ms-input-placeholder {
+    opacity: 0.5;
+  }
+
+ 
+ option:disabled {
+    background:#cccccc;
+    display: none;
+}
+
 .footer {
     background-color: #dbeaf1;
 }
@@ -19,13 +41,24 @@ body {
     font-weight: 600 !important;
 }
 
-#banner-portfolio {
+#banner-sobremi {
     /* background-image: url("../img/portfolio-bg-1920px.webp");*/
     background-size: cover !important;
     min-height: 440px;
     margin-bottom: 7rem !important;
 }
-
+ 
+.navbar-brand, .img-proyecto {
+    cursor: pointer;
+}
+.ubicacion {
+    letter-spacing: 0.37rem;
+    margin-left: -1em;
+}
+.ubicacion small {
+    font-size: 0.90em;
+    
+}
 .mb-n6 {
     margin-bottom: -4rem !important;
 }
@@ -34,18 +67,29 @@ body {
     height: 2px !important;
 }
 
-.user-logged-in-tools {
-    display: none;
-}
+/* .user-logged-in-tools {
+   display: none;
+}*/
 
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus,
+.btn-primary:disabled,
+.btn-info,
 .btn-danger,
 .btn-danger:hover,
 .btn-danger:active,
 .btn-danger:visited,
+.btn-danger:focus,
+.btn-danger:disabled,
 .btn-info,
 .btn-info:hover,
 .btn-info:active,
-.btn-info:visited {
+.btn-info:visited,
+.btn-info:focus,
+.btn-info:disabled  {
     color: #fff;
 }
 
@@ -93,7 +137,8 @@ h1#nombre-apellido::before {
 
 table#sub-nombre-apellido tbody tr::before {
     content: "\00a0\00a0\00a0";
-    font-size: calc(0.85rem + 1.75vw);
+   /* font-size: calc(0.85rem + 1.75vw);*/
+    font-size: calc(0.15rem + 1.5vw);
 }
 
 table#sub-nombre-apellido {
@@ -165,7 +210,7 @@ hr.separator:last-child {
     }
 
     #banner-portfolio {
-        min-height: 250px;
+        min-height: 250px !important;
     }
 
     div#banner-portfolio img {
@@ -201,4 +246,11 @@ hr.separator:last-child {
     .text-justify {
         text-align: left;
     }
+
+    .img-proyecto{
+
+        width:50%;
+        margin-bottom: 2.5em;
+    }
+      
 }

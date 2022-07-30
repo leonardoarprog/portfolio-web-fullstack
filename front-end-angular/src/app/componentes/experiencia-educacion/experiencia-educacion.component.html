@@ -2,64 +2,96 @@
   <div class="row">
     <div class="col-lg-10 offset-lg-1 experiencia">
       <h5 class="mt-5"><span class="offset-md-1 d-block">Experiencia</span></h5>
-      <div class="user-logged-in-tools">
-        <div class="col-md-10 offset-md-1 text-end mt-3"><a class="btn-add btn btn-info btn-lg rounded-circle "
-            href="#"></a> </div>
+
+
+      <div *ngIf="isLogged" class="user-logged-in-tools">
+        <div class="col-md-10 offset-md-1 text-end mt-3"><a class="btn-add btn btn-info btn-lg rounded-circle"
+            [routerLink]="['', { outlets: { 'modal': ['nueva_exp_lab'] }}]" fragment="exp_lab"></a> </div>
         <hr class="col-sm-12 h-2">
       </div>
-      <div class="col-md-10 offset-md-1">
-        <div class="user-logged-in-tools clearfix text-end mt-2 mb-n5"><a
-            class="btn-edit btn btn-danger btn-sm rounded-circle ms-2" href="#"></a><a
-            class="btn-delete btn btn-danger btn-sm rounded-circle ms-2" href="#"></a></div>
-        <div class="row mt-4 mb-3 mt-md-5 mb-md-5">
-          <div class="col-md-2 col-lg-2">
-            <p class="lead"> 2012-2015 </p>
-            <img class="img-fluid d-block col-6 col-md-12 col-lg-9 mb-4"
-              src="https://i.ibb.co/t3kddhw/isologo-empresa.webp" alt="Nombre de Empresa" title="Nombre de Empresa" />
+
+      <div *ngFor="let experiencia of experienciasLaborales">
+
+        <div class="col-md-10 offset-md-1">
+          <div a *ngIf="isLogged" class="user-logged-in-tools clearfix text-end mt-2 mb-n5"><a
+              class="btn-edit btn btn-danger btn-sm rounded-circle ms-2"
+              [routerLink]="['', { outlets: { 'modal': ['editar_exp_lab',experiencia.id] }}]"></a>
+            <button class="btn-delete btn btn-danger btn-sm rounded-circle ms-2"
+              (click)="borrarExpLab(experiencia.id)"></button>
           </div>
-          <div class="col-md-10 col-lg-10">
-            <p class="lead text-uppercase fw-semibold mb-0"><i class="fas fa-chevron-right text-info pe-1"></i>Título
-              del puesto</p>
-            <p class="lead">Nombre de Empresa</p>
-            <p class="fw-light text-justify">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-              ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
-              ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa
-              quis enim. Donec pede justo, </p>
+          <div class="row mt-4 mb-3 mt-md-5 mb-md-5">
+            <div class="col-md-2 col-lg-2">
+              <p *ngIf="experiencia.fechaEgreso !== null" class="lead"> {{experiencia.fechaIngreso | date: 'yyyy'}}-{{experiencia.fechaEgreso | date: 'yyyy' }}</p>
+              <p *ngIf="experiencia.fechaEgreso === null"  class="lead"> {{experiencia.fechaIngreso | date: 'yyyy'}}-ACTUAL.</p>
+              
+              <img class="img-fluid d-block col-6 col-md-12 col-lg-9 mb-4"
+             
+                
+                [src]= "experiencia.isologoEmpresa == null ? '/assets/img/imgBg.svg' : 'data:image/*;base64,'+experiencia.isologoEmpresa | safeHtml"
+                
+                alt="{{experiencia.nombreEmpresa}}"
+                title="{{experiencia.nombreEmpresa}}" />
+            </div>
+            <div class="col-md-10 col-lg-10">
+              <p class="lead text-uppercase fw-semibold mb-0"><i
+                  class="fas fa-chevron-right text-info pe-1"></i>{{experiencia.puesto}}</p>
+              <p class="lead">{{experiencia.nombreEmpresa}}</p>
+              <p class="fw-light text-justify">{{experiencia.descripcion}} </p>
+            </div>
           </div>
         </div>
+
+        <hr>
+
       </div>
-      <hr class="separator">
+
+
     </div>
     <div class="col-lg-10 offset-lg-1 educacion">
       <h5 class="mt-5"><span class="offset-md-1 d-block">Educación</span></h5>
-      <div class="user-logged-in-tools">
+      <div *ngIf="isLogged" class="user-logged-in-tools">
         <div class="col-md-10 offset-md-1 text-end mt-3"><a class="btn-add btn btn-info btn-lg rounded-circle "
-            href="#"></a> </div>
+            [routerLink]="['', { outlets: { 'modal': ['nueva_educacion'] }}]" fragment="educacion"></a> </div>
         <hr class="col-sm-12 h-2">
       </div>
-      <div class="col-md-10 offset-md-1">
-        <div class="user-logged-in-tools clearfix text-end mt-2 mb-n5"><a
-            class="btn-edit btn btn-danger btn-sm rounded-circle ms-2" href="#"></a><a
-            class="btn-delete btn btn-danger btn-sm rounded-circle ms-2" href="#"></a></div>
-        <div class="row mt-4 mb-3 mt-md-5 mb-md-5">
-          <div class="col-md-2 col-lg-2">
-            <p class="lead"> 2012-2015 </p>
-            <img class="img-fluid d-block col-6 col-md-12 col-lg-9 mb-4"
-              src="https://i.ibb.co/1MRg2Ft/isologo-institucion-educativa.webp" alt="Nombre de Institución Educativa"
-              title="Nombre de Institución Educativa" />
-          </div>
-          <div class="col-md-10 col-lg-10">
-            <p class="lead text-uppercase fw-semibold mb-0"><i class="fas fa-chevron-right text-info pe-1"></i>Título
-              Obtenido</p>
-            <p class="lead">Nombre de Institución Educativa</p>
-            <p class="fw-light text-justify">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-              ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
-              ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa
-              quis enim. Donec pede justo, </p>
+
+
+      <div *ngFor="let educacion of educaciones">
+
+        <div class="col-md-10 offset-md-1">
+          <div *ngIf="isLogged" class="user-logged-in-tools clearfix text-end mt-2 mb-n5"><a
+              class="btn-edit btn btn-danger btn-sm rounded-circle ms-2" [routerLink]="['', { outlets: { 'modal': ['editar_educacion',educacion.id] }}]"></a><a
+              class="btn-delete btn btn-danger btn-sm rounded-circle ms-2" (click)="borrarEducacion(educacion.id)"></a></div>
+              <div class="row mt-4 mb-3 mt-md-5 mb-md-5">
+            <div class="col-md-2 col-lg-2">
+          
+
+              <p *ngIf="educacion.fechaEgreso !== null" class="lead"> {{educacion.fechaIngreso | date: 'yyyy'}}-{{educacion.fechaEgreso | date: 'yyyy' }}</p>
+              <p *ngIf="educacion.fechaEgreso === null"  class="lead"> {{educacion.fechaIngreso | date: 'yyyy'}}-ACTUAL.</p>
+
+
+
+
+              <img class="img-fluid d-block col-6 col-md-12 col-lg-9 mb-4"
+                [src]="'data:image/*;base64,'+educacion.isologoEstablecimiento| safeHtml"
+                alt="{{educacion.nombreEstablecimiento}}" title="{{educacion.nombreEstablecimiento}}" />
+            </div>
+            <div class="col-md-10 col-lg-10">
+              <p class="lead text-uppercase fw-semibold mb-0"><i
+                  class="fas fa-chevron-right text-info pe-1"></i>{{educacion.tituloObtenido}}</p>
+              <p class="lead">{{educacion.nombreEstablecimiento}}</p>
+              <p class="fw-light text-justify">{{educacion.descripcion}} </p>
+            </div>
           </div>
         </div>
+        <hr>
       </div>
-      <hr class="separator">
+        
+        <hr class="separator">
+
+      
+
+
     </div>
 
 

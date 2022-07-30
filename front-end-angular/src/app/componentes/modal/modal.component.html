@@ -1,0 +1,18 @@
+<div id="backdrop" class="modal-backdrop fade" [ngClass]="{ show: showModal }"></div>
+<div class="modal d-block fade" [ngClass]="{ show: showModal }" (click)="onClose()" id="listing-dialog" tabindex="-1"
+    role="dialog" aria-labelledby="modalIdLabel">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document" (click)="onDialogClick($event)">
+        <div class="modal-content">
+            <div class="modal-header">
+                <ng-content select="[modal-header]"></ng-content>
+                <button type="button" class="btn-close" (click)="onClose()" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <ng-content></ng-content>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="onClose()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<app-modal>
+    <div modal-header>
+        <p class="lead text-uppercase fw-semibold mb-0 lh-1"><i class="fas fa-chevron-right text-info pe-1"></i>NUEVA HABILIDAD
+        </p>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-4 mx-auto">
+            <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
+
+
+                <div class="mb-4">
+                    <label class="form-label" for="categoriaHabilidad">Categoria de habilidad</label>
+                    <select class="form-select" name="categoriaHabilidad" [(ngModel)]="categoriaHabilidad" (ngModelChange)="obtenerHabilidades();">
+                        <option [ngValue]="item" *ngFor="let item of categoriasHabilidad">{{item.nombreCategoria}}</option>
+                    </select>
+                </div>
+
+
+                <div class="mb-4">
+                    <label class="form-label" for="habilidad">Habilidad</label>
+                    <select class="form-select" name="habilidad" [(ngModel)]="habilidad">
+                        <option [ngValue]="item.id" *ngFor="let item of habilidades" [disabled]="(habilidadesSeteadas.indexOf(item.nombreHabilidad) >= 0) ">{{item.nombreHabilidad}}</option>
+                    </select>
+                </div>
+
+
+              <!-- <div class="mb-4">
+                    <label for="nombreEmpresa">Habilidad</label>
+                    <input type="text" class="form-control" id="nombreEmpresa" name="nombreEmpresa"
+                    [(ngModel)]="habilidad" required>
+                </div>--> 
+ 
+
+                <div class="mb-4">
+                    <label for="nombreEmpresa">Score (min: 0 - max: 100)</label>
+                    <input type="number" class="form-control" id="nombreEmpresa" name="nombreEmpresa"
+                    [(ngModel)]="score" min="0" máx="100" [min]="0"
+                    [max]="100" required>
+                </div>
+ 
+
+                <div class="mb-4 pt-1">
+                    <button class="btn btn-primary btn-block" [disabled]="!f.valid">
+                        <i class="fas fa-pencil-alt"> </i> Crear </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</app-modal>

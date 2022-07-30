@@ -1,0 +1,60 @@
+<app-modal>
+    <div modal-header>
+        <p class="lead text-uppercase fw-semibold mb-0 lh-1"><i class="fas fa-chevron-right text-info pe-1"></i>NUEVO PROYECTO
+        </p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mt-4 mx-auto">
+            <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
+
+                <div class="mb-4">
+                    <label class="form-label" for="nombreProyecto">Nombre del proyecto</label>
+                    <input type="text" class="form-control" id="nombreProyecto" name="nombreProyecto"
+                    [(ngModel)]="nombreProyecto" required>
+                </div>
+ 
+                <div class="mb-4">
+                    <label class="form-label"  for="fechaRealizacion">Fecha ingreso</label>
+                    <input type="date" class="form-control" id="fechaRealizacion" name="fechaRealizacion"
+                    [(ngModel)]="fechaRealizacion" required>
+                </div>
+
+                <div class="mb-4">
+                <label class="form-label" for="descripcion" class="form-label">Descripción</label>
+                <textarea [(ngModel)]="descripcion" class="form-control" id="descripcion" name="descripcion" rows="3" required></textarea>
+            </div>
+
+
+            <div class="mb-4">
+                <label class="form-label" for="urlProyecto">URL del proyecto</label>
+                <input type="text" class="form-control" id="urlProyecto" name="urlProyecto"
+                [(ngModel)]="urlProyecto" required>
+            </div>
+
+
+                <div class="mb-4">
+                    <label class="form-label" for="imagenProyecto1">Imagen del proyecto - 1 (Máx. 500KB)</label>
+                    <input type="file" accept="image/*"  [(ngModel)]="file1" id="imagenProyecto1" name="imagenProyecto1" class="form-control mb-3" (change)="onImagenUpload1($event)">
+                </div>
+
+                
+                <div class="mb-4">
+                    <label class="form-label" for="imagenProyecto2">Imagen del proyecto - 2 (Máx. 500KB)</label>
+                    <input type="file" accept="image/*"  [(ngModel)]="file2" id="imagenProyecto2" name="imagenProyecto2" class="form-control mb-3" (change)="onImagenUpload2($event)" >
+                </div>
+
+                 
+                <div class="mb-4">
+                    <label class="form-label" for="imagenProyecto3">Imagen del proyecto - 3 (Máx. 500KB)</label>
+                    <input type="file" accept="image/*" [(ngModel)]="file3" id="imagenProyecto3" name="imagenProyecto3" class="form-control mb-3" (change)="onImagenUpload3($event)" >
+                </div>
+
+                <div class="mb-4 pt-1">
+                    <button class="btn btn-primary btn-block" [disabled]="!f.valid">
+                        <i class="fas fa-pencil-alt"> </i> Crear </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</app-modal>
