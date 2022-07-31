@@ -42,7 +42,24 @@ export class SobreMiComponent implements OnInit {
 
     this.personaServicio.obtenerDatosPersonalesPorUsuario(nombreUsuario).subscribe({
       next: data => {
+
+        if (data.fotoPerfil == null) {
+          this.fotoPerfil = null;
+        } else {
+          this.fotoPerfil = data.fotoPerfil;
+    
+        }
+
+        if (data.imgBg == null) {
+          this.imgBg = null;
+        } else {
+          this.imgBg = data.imgBg;
+        }
+
         this.sobreMi = data;
+
+
+
         this.dataCompartida.push(this.sobreMi.email, this.sobreMi.urlRepositorio, this.sobreMi.urlTwitter, this.sobreMi.urlFacebook)
         this.enviarNuevaData(this.dataCompartida);
       },
@@ -51,49 +68,6 @@ export class SobreMiComponent implements OnInit {
       },
     });
 
-
-    this.personaServicio.obtenerFotoPerfilPorUsuario(nombreUsuario).subscribe(data => {
-      if (data == null) {
-        this.fotoPerfil = null;
-      } else {
-        this.fotoPerfil = data;
-        const reader = new FileReader();
-        reader.onload = (e) => this.fotoPerfil = e.target?.result;
-        reader.readAsDataURL(new Blob([data]));
-      }
-    });
-
-
-    this.personaServicio.obtenerImgBgPorUsuario(nombreUsuario).subscribe(data => {
-      if (data == null) {
-        this.imgBg = null;
-      } else {
-        this.imgBg = data;
-        const reader = new FileReader();
-        reader.onload = (e) => this.imgBg = e.target?.result;
-        reader.readAsDataURL(new Blob([data]));
-      }
-    });
-
-
-
-
-
-  }
-
-
-
-
-  borrarSobreMi(): void {
-    const nombreUsuario = this.activatedRoute.snapshot.params['nombreUsuario']
-    this.personaServicio.borrarSobreMi(nombreUsuario).subscribe({
-      next: data => {
-        window.location.reload();
-      },
-      error: _err => {
-
-      },
-    });
   }
 
   enviarNuevaData(data: string[]) {

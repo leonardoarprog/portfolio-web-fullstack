@@ -14,31 +14,20 @@ const cabecera = { headers: new HttpHeaders({ 'Content-Type': 'application/json'
 })
 export class ExperienciaEducacionService {
 
-  usuarioURL = 'https://portfolio-web-back.herokuapp.com/api/usuarios/';
+  private usuarioURL = 'https://portfolio-web-back.herokuapp.com/api/usuarios/';
 
-
+  //private usuarioURL = 'http://localhost:8080/api/usuarios/';
 
   constructor(private httpClient: HttpClient) { }
 
 
   ////////////////////////////////////   CRUD EXPERIENCIAS LABORALES  ////////////////////////////
 
-  /* public crearExpLaboral(uploadData: any, nombreUsuario: string): Observable<any> {
-    return this.httpClient.post<any>(this.usuarioURL + `exp_laborales/exp_lab/crear/${nombreUsuario}`, uploadData, { observe: 'response' });
-  } */
-
-
   public crearExpLaboral(formData: FormData, nombreUsuario: string): Observable<any> {
     return this.httpClient.post(this.usuarioURL + `exp_laborales/exp_lab/crear/${nombreUsuario}`, formData, { observe: 'response' }).pipe(map((data: any) => {
       return data;
     }));
   }
-
-  /*public crearExpLaboral(formData: FormData, nombreUsuario: string): Observable<any> {
-     return this.httpClient.post(this.usuarioURL + `exp_laborales/exp_lab/crear/${nombreUsuario}`, formData,  { observe: 'response' }
-   );
-   }*/
-
 
   public borrarExpLaboral(idExpLab: number): Observable<any> {
     return this.httpClient.delete<any>(this.usuarioURL + `exp_laborales/exp_lab/delete/${idExpLab}`, cabecera);
@@ -68,28 +57,13 @@ export class ExperienciaEducacionService {
   }
 
 
-
-
-
-
   ////////////////////////////////////    CRUD EDUCACION   ////////////////////////////
-
-
-  /* public crearExpLaboral(uploadData: any, nombreUsuario: string): Observable<any> {
-    return this.httpClient.post<any>(this.usuarioURL + `exp_laborales/exp_lab/crear/${nombreUsuario}`, uploadData, { observe: 'response' });
-  } */
-
 
   public crearEducacion(formData: FormData, nombreUsuario: string): Observable<any> {
     return this.httpClient.post(this.usuarioURL + `educaciones/educacion/crear/${nombreUsuario}`, formData, { observe: 'response' }).pipe(map((data: any) => {
       return data;
     }));
   }
-
-  /*public crearExpLaboral(formData: FormData, nombreUsuario: string): Observable<any> {
-     return this.httpClient.post(this.usuarioURL + `exp_laborales/exp_lab/crear/${nombreUsuario}`, formData,  { observe: 'response' }
-   );
-   }*/
 
 
   public borrarEducacion(idEducacion: number): Observable<any> {

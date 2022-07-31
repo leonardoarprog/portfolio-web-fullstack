@@ -113,11 +113,6 @@ export class EditarSobreMiComponent implements OnInit {
     this.f.form.controls['localidad'].setErrors({ 'incorrect': true });
   }
 
-  someFunction() {
-    alert('TOT');
-  }
-
-
   obtenerProvincias() {
 
     const idPais = this.f.value.pais.id;

@@ -1,7 +1,6 @@
 package ar.com.portfolioweb.backendspringboot.controlador;
 
 import java.io.IOException;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,8 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import ar.com.portfolioweb.backendspringboot.dto.LocalidadDto;
 import ar.com.portfolioweb.backendspringboot.dto.Mensaje;
@@ -30,12 +27,12 @@ import ar.com.portfolioweb.backendspringboot.seguridad.modelo.Usuario;
 import ar.com.portfolioweb.backendspringboot.seguridad.servicio.UsuarioServicio;
 import ar.com.portfolioweb.backendspringboot.servicio.LocalidadServicio;
 import ar.com.portfolioweb.backendspringboot.servicio.PersonaServicio;
-import ar.com.portfolioweb.backendspringboot.utilidad.ImagenUtilidad;
+
 
 @Controller
 @RequestMapping(path = "/api/usuarios")
-@CrossOrigin(origins = "http://localhost:4200")
-
+//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://portfolio-web-front.web.app")
 public class PersonaControlador {
 
     @Autowired
@@ -82,7 +79,7 @@ public class PersonaControlador {
         if (!usuarioServicio.existePorNombreUsuario(nombreUsuario))
             return new ResponseEntity<>(new Mensaje("No existe ese persona"), HttpStatus.NOT_FOUND);
         Integer usuarioId = usuarioServicio.obtenerUsuarioPorNombre(nombreUsuario).get().getId();
-        personaServicio.actualizarFotoPerfil(usuarioId, ImagenUtilidad.compressImage(file.getBytes()));
+        personaServicio.actualizarFotoPerfil(usuarioId, file.getBytes());
         return new ResponseEntity<>(new Mensaje("Foto de perfil guardada satisfactoriamente"), HttpStatus.CREATED);
     }
 
@@ -95,7 +92,7 @@ public class PersonaControlador {
         if (!usuarioServicio.existePorNombreUsuario(nombreUsuario))
             return new ResponseEntity<>(new Mensaje("No existe ese persona"), HttpStatus.NOT_FOUND);
         Integer usuarioId = usuarioServicio.obtenerUsuarioPorNombre(nombreUsuario).get().getId();
-        personaServicio.actualizarImgBg(usuarioId, ImagenUtilidad.compressImage(file.getBytes()));
+        personaServicio.actualizarImgBg(usuarioId, file.getBytes());
         return new ResponseEntity<>(new Mensaje("Imagen background guardada satisfactoriamente"), HttpStatus.CREATED);
     }
 
@@ -111,75 +108,6 @@ public class PersonaControlador {
         return new ResponseEntity<>(new Mensaje("Datos guardados satisfactoriamente"), HttpStatus.CREATED);
     }
 
-    @GetMapping(path = { "/datos_personales/foto_perfil/obtener/{nombreUsuario}" })
-    public ResponseEntity<byte[]> getImagenPerfil(@PathVariable("nombreUsuario") String nombreUsuario)
-            throws IOException {
-
-        Integer usuarioId = usuarioServicio.obtenerUsuarioPorNombre(nombreUsuario).get().getId();
-        Optional<Optional<byte[]>> checkNull = Optional.ofNullable(personaServicio.obtenerFotoPerfil(usuarioId));
-
-        if (checkNull.get().isEmpty()) {
-
-            return new ResponseEntity<>(null, null, HttpStatus.NO_CONTENT);
-
-        }
-
-        else {
-
-            final byte[] dbImagen = personaServicio.obtenerFotoPerfil(usuarioId).get();
-            return new ResponseEntity<byte[]>(ImagenUtilidad.decompressImage(dbImagen), HttpStatus.OK);
-
-        }
-
-    }
-
-    @GetMapping(path = { "/datos_personales/img_bg/obtener/{nombreUsuario}" })
-    public ResponseEntity<byte[]> getImagenBg(@PathVariable("nombreUsuario") String nombreUsuario) throws IOException {
-
-        Integer usuarioId = usuarioServicio.obtenerUsuarioPorNombre(nombreUsuario).get().getId();
-        Optional<Optional<byte[]>> checkNull = Optional.ofNullable(personaServicio.obtenerImgBg(usuarioId));
-
-        if (checkNull.get().isEmpty()) {
-
-            return new ResponseEntity<>(null, null, HttpStatus.NO_CONTENT);
-
-        }
-
-        else {
-
-            final byte[] dbImagen = personaServicio.obtenerImgBg(usuarioId).get();
-            return new ResponseEntity<byte[]>(ImagenUtilidad.decompressImage(dbImagen), HttpStatus.OK);
-
-        }
-
-    }
-
-    @GetMapping(path = { "/datos_personales/sobre_mi/obtener/{nombreUsuario}" })
-    public ResponseEntity<Object> getSobreMi(@PathVariable("nombreUsuario") String nombreUsuario) throws IOException {
-        Integer usuarioId = usuarioServicio.obtenerUsuarioPorNombre(nombreUsuario).get().getId();
-
-        // final String dbSobreMi = personaServicio.obtenerSobreMi(usuarioId).get();
-
-        Optional<Optional<String>> checkNull = Optional.ofNullable(personaServicio.obtenerSobreMi(usuarioId));
-
-        // String JsonStringDbSobreMi = "{\"valor\":\"" + dbSobreMi + "\"}";
-
-        if (checkNull.get().isEmpty()) {
-            String JsonStringDbSobreMi = "{\"valor\":\"" + "\"}";
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode jsonNode = mapper.readTree(JsonStringDbSobreMi);
-            return new ResponseEntity<Object>(jsonNode, HttpStatus.OK);
-        }
-
-        else {
-            final String dbSobreMi = personaServicio.obtenerSobreMi(usuarioId).get();
-            String JsonStringDbSobreMi = "{\"valor\":\"" + dbSobreMi + "\"}";
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode jsonNode = mapper.readTree(JsonStringDbSobreMi);
-            return new ResponseEntity<Object>(jsonNode, HttpStatus.OK);
-        }
-
-    }
 
     @DeleteMapping(path = "/datos_personales/sobre_mi/borrar/{nombreUsuario}")
     @PreAuthorize("hasRole('ADMIN')")
@@ -192,26 +120,6 @@ public class PersonaControlador {
         return new ResponseEntity<>(new Mensaje("Datos borrados corectamente"), HttpStatus.OK);
     }
 
-    /*
-     * @GetMapping(path = "/listar")
-     * public ResponseEntity<List<Persona>> listarPersonas() {
-     * List<Persona> lista = personaServicio.obtenerTodos();
-     * return new ResponseEntity<List<Persona>>(lista, HttpStatus.OK);
-     * }
-     */
-
-    /*
-     * @GetMapping(path = "/user_id/{id}")
-     * 
-     * @PreAuthorize("#id == authentication.principal.id")
-     * public ResponseEntity<?> getOne(@PathVariable Integer id) {
-     * if (!personaServicio.existePorId(id))
-     * return new ResponseEntity<>(new Mensaje("No existe esa persona"),
-     * HttpStatus.NOT_FOUND);
-     * Persona persona = personaServicio.obtenerPorId(id).get();
-     * return new ResponseEntity<Persona>(persona, HttpStatus.OK);
-     * }
-     */
 
     @GetMapping("/username/{nombreUsuario}")
     public ResponseEntity<?> getOne(@PathVariable String nombreUsuario) {

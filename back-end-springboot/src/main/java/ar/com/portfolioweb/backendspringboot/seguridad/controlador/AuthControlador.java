@@ -34,7 +34,8 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://portfolio-web-front.web.app")
+//@CrossOrigin(origins = "http://localhost:4200")
 public class AuthControlador {
 
     @Autowired
@@ -80,21 +81,7 @@ public class AuthControlador {
         return new ResponseEntity<>(new Mensaje("Usuario guardado"), HttpStatus.CREATED);
     }
 
-   /* @PostMapping("/login")
-    public ResponseEntity<?> login(@Valid @RequestBody LoginUsuario loginUsuario, BindingResult bindingResult) {
-        if (bindingResult.hasErrors())
-            return new ResponseEntity<>(new Mensaje("Campos vacíos"), HttpStatus.BAD_REQUEST);
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginUsuario.getNombreUsuario(), loginUsuario.getPassword()));
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        String jwt = jwtProvider.generateToken(authentication);
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        JwtDto jwtDto = new JwtDto(jwt, userDetails.getUsername(), userDetails.getAuthorities());
-        return new ResponseEntity<JwtDto>(jwtDto, HttpStatus.OK);
-    }*/
-
-
-
+   
     @PostMapping("/login")
     public ResponseEntity<?> login(@Valid @RequestBody LoginUsuario loginUsuario, BindingResult bindingResult) {
        

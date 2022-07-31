@@ -27,7 +27,6 @@ export class NuevoProyectoComponent implements OnInit {
   file2!: File;
   file3!: File;
   errorMsj: any;
-  //proyecto!: Proyecto;
   constructor(
     private activatedRoute: ActivatedRoute,
     private proyectoServicio: ProyectoService,

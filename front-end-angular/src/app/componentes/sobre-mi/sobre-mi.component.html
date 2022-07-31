@@ -1,9 +1,9 @@
 <a  *ngIf="isLogged" class="user-logged-in-tools btn-edit btn btn-danger btn-sm rounded-circle position-absolute end-0 mt-4 me-5" [routerLink]="['', { outlets: { 'modal': ['editar_imagen'] }}]" fragment="img_bg"></a>
 
-<div *ngIf="sobreMi" class="banner d-flex align-items-end" id="banner-sobremi" [style.background] = "imgBg == null ? 'url(\'/assets/img/imgBg.svg\')' : 'url(' + imgBg + ')'" title="Imagen Banner"> 
-<img *ngIf="fotoPerfil == null" id="profile-picture" src="../../../assets/img/fotoPerfil.svg"  width="190" height="190" class="rounded-circle border border-white border-5 img-fluid d-block mx-auto mb-n6" alt="Foto Perfil" title="Foto Perfil"/> 
+<div *ngIf="sobreMi" class="banner d-flex align-items-end" id="banner-sobremi" [style.background] = "imgBg == null ? 'url(\'/assets/img/imgBg.svg\')' : 'url(' + 'data:image/*;base64,'+sobreMi.imgBg + ')'" title="Portfolio Web de {{sobreMi.nombre}} {{sobreMi.apellido}}"> 
+<img *ngIf="fotoPerfil == null" id="profile-picture" src="../../../assets/img/fotoPerfil.svg"  width="190" height="190" class="rounded-circle border border-white border-5 img-fluid d-block mx-auto mb-n6" alt="{{sobreMi.nombre}} {{sobreMi.apellido}}" title="{{sobreMi.nombre}} {{sobreMi.apellido}}"/> 
 
-<img *ngIf="fotoPerfil != null" id="profile-picture" [src]="fotoPerfil | safeHtml"  width="190" height="190" class="rounded-circle border border-white border-5 img-fluid d-block mx-auto mb-n6" alt="Foto Perfil" title="Foto Perfil"/> 
+<img *ngIf="fotoPerfil != null" id="profile-picture" [src]="'data:image/*;base64,'+sobreMi.fotoPerfil | safeHtml"  width="190" height="190" class="rounded-circle border border-white border-5 img-fluid d-block mx-auto mb-n6" alt="{{sobreMi.nombre}} {{sobreMi.apellido}}" title="{{sobreMi.nombre}} {{sobreMi.apellido}}"/> 
 <a *ngIf="isLogged" class="user-logged-in-tools btn-edit btn btn-danger btn-sm rounded-circle position-absolute start-50 translate-middle" [routerLink]="['', { outlets: { 'modal': ['editar_imagen'] }}]" fragment="foto_perfil"></a> 
 </div>
 
@@ -14,8 +14,6 @@
       <div class="text-center mb-5">
         <div class="d-inline-block mb-4"> <a *ngIf="isLogged" class="user-logged-in-tools btn-edit btn btn-danger btn-sm rounded-circle mb-3"   [routerLink]="['', { outlets: { 'modal': ['editar_datos_personales'] }}]" ></a>
           <h1 id="nombre-apellido" class="display-4 text-uppercase text-center lh-1 mb-0"><span class="fw-bold">{{sobreMi.nombre ? sobreMi.nombre : "Nombre"}}</span> {{sobreMi.apellido ? sobreMi.apellido : "Apellido"}}</h1>
-        
-
           <div *ngIf="sobreMi.posicionLaboral !== null">
           <table id="sub-nombre-apellido" class="w-100 text-uppercase lh-1">  
             <tbody>
@@ -43,9 +41,9 @@
       <h5><span class="offset-md-1 d-block">Sobre mi</span></h5>
       <div class="row">
         <div class="col-md-10 offset-md-1">
-          <div *ngIf="isLogged" class="user-logged-in-tools clearfix text-end mt-2 mb-n5"><a class="btn-edit btn btn-danger btn-sm rounded-circle ms-2" [routerLink]="['', { outlets: { 'modal': ['editar_valor'] }}]" fragment="sobre_mi"></a><a *ngIf="sobreMi.sobreMi != null" class="btn-delete btn btn-danger btn-sm rounded-circle ms-2" (click)="borrarSobreMi()"></a></div>
+      <div *ngIf="isLogged" class="user-logged-in-tools clearfix text-end mt-2 mb-n5"><a class="btn-edit btn btn-danger btn-sm rounded-circle ms-2" [routerLink]="['', { outlets: { 'modal': ['editar_valor'] }}]" fragment="sobre_mi"></a> </div>
           <p class="fw-light mb-5 mt-5 text-justify">{{sobreMi.sobreMi}}</p>
-        </div>
+       
       </div>
     </div>
   </div>

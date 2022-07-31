@@ -58,7 +58,6 @@ export class LoginComponent implements OnInit {
         
         this.router.navigate(['../username/' + this.nombreUsuario])
           .then(() => {
-          //  window.location.reload();
           this.modalUpdate.onCloseAfterUpdate();
           });
 

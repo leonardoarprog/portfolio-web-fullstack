@@ -16,7 +16,8 @@ import ar.com.portfolioweb.backendspringboot.servicio.PaisServicio;
 
 @Controller
 @RequestMapping(path = "/api/usuarios")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://portfolio-web-front.web.app")
+//@CrossOrigin(origins = "http://localhost:4200")
 public class PaisControlador {
 
     @Autowired

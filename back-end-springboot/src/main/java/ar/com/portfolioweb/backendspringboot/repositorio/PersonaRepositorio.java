@@ -35,21 +35,6 @@ public interface PersonaRepositorio extends CrudRepository<Persona, Integer> {
     @Modifying
     @Query("update Persona u set u.sobreMi = :sobreMi where u.id = :id")
     void updateSobreMi(@Param(value = "id") Integer id, @Param(value = "sobreMi") String sobreMi);
-
-   // @Query("select Persona u get u.fotoPerfil = :fotoPerfil where u.id = :id")
-    @Query(value="select foto_perfil from Persona u where u.id =:id", nativeQuery=true)
-    Optional<byte[]> selectFotoPerfil(@Param(value = "id") Integer id);
-
-    //@Query("select Persona u get u.imgBg = u.imgBg where u.id = :id")
-    @Query(value="select img_bg from Persona u where u.id =:id", nativeQuery=true)
-    Optional<byte[]> selectImgBg(@Param(value = "id") Integer id);
-
-    
-    //@Query("select Persona u get u.imgBg = u.imgBg where u.id = :id")
-    @Query(value="select sobre_mi from Persona u where u.id =:id", nativeQuery=true)
-    Optional<String> selectSobreMi(@Param(value = "id") Integer id);
-
-     //@Query("select Persona u get u.imgBg = u.imgBg where u.id = :id")
  
     @Modifying
     @Query("update Persona u set u.sobreMi = null where u.id = :id")

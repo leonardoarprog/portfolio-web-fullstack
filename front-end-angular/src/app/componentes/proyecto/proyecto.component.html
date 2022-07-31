@@ -19,13 +19,13 @@
             <p class="lead text-uppercase fw-semibold mt-5 mb-0"><i class="fas fa-chevron-right text-info pe-1"></i>{{proyecto.nombreProyecto}}</p>
             <p class="lead">{{proyecto.fechaRealizacion | date: 'yyyy'}}</p>
             <p class="fw-light text-justify">{{proyecto.descripcion}}</p>
-            <a class="btn btn-info btn-sm mt-3 mb-3" href="http://{{proyecto.urlProyecto}}" target="_new"><small class="fw-bold text-uppercase ps-3 pe-3">Ver Proyecto</small></a>
+            <a class="btn btn-info btn-sm mt-3 mb-3" href="{{proyecto.urlProyecto}}" target="_new"><small class="fw-bold text-uppercase ps-3 pe-3">Ver Proyecto</small></a>
             <div class="row mt-5 mb-5">
 
-              <div *ngIf="proyecto.imgProyecto1" class="col-sm-2"> <a data-bs-toggle="modal" [attr.data-bs-target]="'#'+proyecto.nombreProyecto+'1'"><img class="img-proyecto img-fluid d-block mx-auto" [src]="'data:image/*;base64,'+proyecto.imgProyecto1 | safeHtml" alt="{{proyecto.nombreProyecto}}" title="{{proyecto.nombreProyecto}}"/></a> 
+              <div *ngIf="proyecto.imgProyecto1" class="col-sm-2"> <a data-bs-toggle="modal" [attr.data-bs-target]="'#img1'+proyecto.id+'1'"><img class="img-proyecto img-fluid d-block mx-auto" [src]="'data:image/*;base64,'+proyecto.imgProyecto1 | safeHtml" alt="{{proyecto.nombreProyecto}}" title="{{proyecto.nombreProyecto}}"/></a> 
                 
                 <!-- Modal -->
-                <div class="modal fade" id="{{proyecto.nombreProyecto}}1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="{{'img1'+proyecto.id}}1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -39,17 +39,17 @@
                 <!-- / Modal --> 
               </div>
 
-              <div *ngIf="proyecto.imgProyecto2" class="col-sm-2"> <a data-bs-toggle="modal" [attr.data-bs-target]="'#'+proyecto.nombreProyecto+'2'"><img class="img-proyecto img-fluid d-block mx-auto" [src]="'data:image/*;base64,'+proyecto.imgProyecto2 | safeHtml" alt="{{proyecto.nombreProyecto}}" title="{{proyecto.nombreProyecto}}"/></a> 
+              <div *ngIf="proyecto.imgProyecto2" class="col-sm-2"> <a data-bs-toggle="modal" [attr.data-bs-target]="'#img2'+proyecto.id+'2'"><img class="img-proyecto img-fluid d-block mx-auto" [src]="'data:image/*;base64,'+proyecto.imgProyecto2 | safeHtml" alt="{{proyecto.nombreProyecto}}" title="{{proyecto.nombreProyecto}}"/></a> 
                 
                 <!-- Modal -->
-                <div class="modal fade" id="{{proyecto.nombreProyecto}}2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="{{'img2'+proyecto.id}}2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content">
                       <div class="modal-header">
                         <p class="lead text-uppercase fw-semibold mt-0 mb-0 modal-title"><i class="fas fa-chevron-right text-info pe-1"></i>{{proyecto.nombreProyecto}}</p>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
-                      <div class="modal-body"> <img class="img-fluid d-block mx-auto" [src]="'data:image/*;base64,'+proyecto.imgProyecto2 | safeHtml" alt="{{proyecto.nombreProyecto}} - 1" title="{{proyecto.nombreProyecto}} - 1"/> </div>
+                      <div class="modal-body"> <img class="img-fluid d-block mx-auto" [src]="'data:image/*;base64,'+proyecto.imgProyecto2 | safeHtml" alt="{{proyecto.nombreProyecto}} - 2" title="{{proyecto.nombreProyecto}} - 2"/> </div>
                     </div>
                   </div>
                 </div>
@@ -58,18 +58,18 @@
 
 
               <div *ngIf="proyecto.imgProyecto3" class="col-sm-2"> 
-                <a data-bs-toggle="modal" [attr.data-bs-target]="'#'+proyecto.nombreProyecto+'3'">
+                <a data-bs-toggle="modal" [attr.data-bs-target]="'#img3'+proyecto.id+'3'">
                 <img class="img-proyecto img-fluid d-block mx-auto" [src]="'data:image/*;base64,'+proyecto.imgProyecto3 | safeHtml" alt="{{proyecto.nombreProyecto}}" title="{{proyecto.nombreProyecto}}"/></a> 
                 
                 <!-- Modal -->
-                <div class="modal fade" id="{{proyecto.nombreProyecto}}3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="{{'img3'+proyecto.id}}3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content">
                       <div class="modal-header">
                         <p class="lead text-uppercase fw-semibold mt-0 mb-0 modal-title"><i class="fas fa-chevron-right text-info pe-1"></i>{{proyecto.nombreProyecto}}</p>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
-                      <div class="modal-body"> <img class="img-fluid d-block mx-auto" [src]="'data:image/*;base64,'+proyecto.imgProyecto3 | safeHtml" alt="{{proyecto.nombreProyecto}} - 1" title="{{proyecto.nombreProyecto}} - 1"/> </div>
+                      <div class="modal-body"> <img class="img-fluid d-block mx-auto" [src]="'data:image/*;base64,'+proyecto.imgProyecto3 | safeHtml" alt="{{proyecto.nombreProyecto}} - 3" title="{{proyecto.nombreProyecto}} - 3"/> </div>
                     </div>
                   </div>
                 </div>

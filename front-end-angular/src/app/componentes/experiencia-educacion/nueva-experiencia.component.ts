@@ -5,7 +5,6 @@ import { ToastrService } from 'ngx-toastr';
 import { ExperienciaLaboral } from 'src/app/modelos/experiencia-laboral';
 import { ExperienciaLaboralDto } from 'src/app/modelos/experiencia-laboral-dto';
 import { TipoEmpleo } from 'src/app/modelos/tipo-empleo';
-import { DatosPortfolioService } from 'src/app/servicios/datos-portfolio.service';
 import { ExperienciaEducacionService } from 'src/app/servicios/experiencia-educacion.service';
 import { ModalComponent } from '../modal/modal.component';
 
@@ -55,40 +54,6 @@ export class NuevaExperienciaComponent implements OnInit {
     this.file = event.target.files[0];
   }
 
-
-  
- /*  uploadImagen() {
-
-    const imagenFormData = new FormData();
-    const nombre_usuario = this.activatedRoute.snapshot.parent?.children[0].params['nombreUsuario'];
-    imagenFormData.append('imagen', this.isologoEmpresa);
-    this.personaServicio.uploadImgBg(imagenFormData, nombre_usuario).subscribe({
-      next: () => {
-        this.modalUpdate.onCloseAfterUpdate();
-        this.toastr.success('Imagen guardada correctamente', 'OK', {
-          timeOut: 3000, positionClass: 'toast-top-center'
-        });
-      },
-      error: err => {
-        this.errorMsj = err.message;
-        this.toastr.error(this.errorMsj, '¡Imagen no cargada debido a algún error!', {
-          timeOut: 3000, positionClass: 'toast-top-center',
-        });
-      },
-    });
-  } */
-
-  /*  experienciaLaboralDto : ExperienciaLaboral = new ExperienciaLaboral(
-    this.f.value.tipoEmpleo, 
-    this.f.value.nombreEmprsa, 
-    this.f.value.esTrabajoActual,
-    this.f.value.fechaIngreso,
-    this.f.value.fechaIngreso,
-    this.f.value.puesto,
-    this.f.value.descripcion,
-    this.f.value.isologoEmpresa = null
-  );*/
-
   onCreate(): void {
    
       const experienciaLaboralDto = new ExperienciaLaboralDto(
@@ -112,16 +77,6 @@ export class NuevaExperienciaComponent implements OnInit {
     this.saveFormData(formData);
     
   } 
-
-
-/*  saveFormData(formData: FormData) {
-
-    const nombre_usuario = this.activatedRoute.snapshot.parent?.children[0].params['nombreUsuario'];
-    this.expLaboralServicio.crearExpLaboral(formData, nombre_usuario).subscribe(res => {
-
-    });
-  
-  } */
 
   saveFormData(formData: FormData) {
 

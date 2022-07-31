@@ -57,18 +57,6 @@ public class PersonaServicio {
         personaRepositorio.updateSobreMi(id, sobreMi);
     }
 
-    public Optional<byte[]> obtenerFotoPerfil(Integer id) {
-        return personaRepositorio.selectFotoPerfil(id);
-    }
-
-    public Optional<byte[]> obtenerImgBg(Integer id) {
-        return personaRepositorio.selectImgBg(id);
-    }
-
-    public Optional<String> obtenerSobreMi(Integer id) {
-        return personaRepositorio.selectSobreMi(id);
-    }
-
     public void borrarSobreMi(Integer id) {
         personaRepositorio.deleteSobreMi(id);
     }

@@ -15,7 +15,6 @@ import { EditarProyectoComponent } from './componentes/proyecto/editar-proyecto.
 import { NuevoProyectoComponent } from './componentes/proyecto/nuevo-proyecto.component';
 import { EditarSobreMiComponent } from './componentes/sobre-mi/editar-sobre-mi.component';
 import { EditarUnValorComponent } from './componentes/sobre-mi/editar-un-valor.component';
-//import { NuevoUsuarioComponent } from './componentes/usuario/nuevo-usuario.component';
 import { GuardService as guard } from './guards/guard.service';
 
 

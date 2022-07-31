@@ -49,11 +49,11 @@ public class Persona {
     private String sobreMi;
     @Lob
     @Column(name="foto_perfil",updatable = false, nullable = true)
-    @JsonIgnore
+    //@JsonIgnore
     private byte[] fotoPerfil;
     @Lob
     @Column(name="img_bg",updatable = false, nullable = true)
-    @JsonIgnore
+    //@JsonIgnore
     private byte[] imgBg;
     private String urlRepositorio;
     private String urlFacebook;

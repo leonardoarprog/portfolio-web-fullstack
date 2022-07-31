@@ -12,13 +12,13 @@ const cabecera = { headers: new HttpHeaders({ 'Content-Type': 'application/json'
 })
 export class HabilidadService {
 
-  usuarioURL = 'https://portfolio-web-back.herokuapp.com/api/usuarios/';
+  private usuarioURL = 'https://portfolio-web-back.herokuapp.com/api/usuarios/';
 
-
+  //private usuarioURL = 'http://localhost:8080/api/usuarios/';
 
   constructor(private httpClient: HttpClient) { }
 
-////////////////////////////////////  CATEGORIAS HABILIDADES  ////////////////////////////
+
 
   public obtenerCategoriasHabilidad(): Observable<any> {
     return this.httpClient.get<Array<CategoriaHabilidad>>(this.usuarioURL + `categorias_habilidad`, cabecera);
@@ -31,34 +31,31 @@ export class HabilidadService {
 
   }
 
-
-////////////////////////////////////  HABILIDADES CRUD  ////////////////////////////
-
-public crearPersonaHabilidad(personaHabilidad: PersonaHabilidad, nombreUsuario: string): Observable<any> {
-  return this.httpClient.post<any>(this.usuarioURL + `habilidades/habilidad/crear/${nombreUsuario}`, personaHabilidad, cabecera);
-}
+  public crearPersonaHabilidad(personaHabilidad: PersonaHabilidad, nombreUsuario: string): Observable<any> {
+    return this.httpClient.post<any>(this.usuarioURL + `habilidades/habilidad/crear/${nombreUsuario}`, personaHabilidad, cabecera);
+  }
 
 
-public obtenerPersonaHabilidadPorUsuario(nombreUsuario: string): Observable<any[]> {
-  return this.httpClient.get<any[]>(this.usuarioURL + `habilidades/obtener/${nombreUsuario}`, cabecera);
-}
+  public obtenerPersonaHabilidadPorUsuario(nombreUsuario: string): Observable<any[]> {
+    return this.httpClient.get<any[]>(this.usuarioURL + `habilidades/obtener/${nombreUsuario}`, cabecera);
+  }
 
-public borrarPersonaHabilidad(idPersHab: number): Observable<any> {
-  return this.httpClient.delete<any>(this.usuarioURL + `habilidades/habilidad/delete/${idPersHab}`, cabecera);
-}
+  public borrarPersonaHabilidad(idPersHab: number): Observable<any> {
+    return this.httpClient.delete<any>(this.usuarioURL + `habilidades/habilidad/delete/${idPersHab}`, cabecera);
+  }
 
-public obtenerPersonaHabilidadPorId(id: number): Observable<any> {
-  return this.httpClient.get<any>(this.usuarioURL + `habilidades/habilidad/edit/${id}`, cabecera);
+  public obtenerPersonaHabilidadPorId(id: number): Observable<any> {
+    return this.httpClient.get<any>(this.usuarioURL + `habilidades/habilidad/edit/${id}`, cabecera);
 
-}
+  }
 
-public actualizarPersonaHabilidadPorId(score: number, id: number): Observable<any> {
-  return this.httpClient.post<any>(this.usuarioURL + `habilidades/habilidad/update/${id}`, score, cabecera);
+  public actualizarPersonaHabilidadPorId(score: number, id: number): Observable<any> {
+    return this.httpClient.post<any>(this.usuarioURL + `habilidades/habilidad/update/${id}`, score, cabecera);
 
-}
+  }
 
-public obtenerScore(id: number): Observable<any> {
-  return this.httpClient.get<any>(this.usuarioURL + `habilidades/habilidad/score/obtener/${id}`, cabecera);
-}
+  public obtenerScore(id: number): Observable<any> {
+    return this.httpClient.get<any>(this.usuarioURL + `habilidades/habilidad/score/obtener/${id}`, cabecera);
+  }
 
 }

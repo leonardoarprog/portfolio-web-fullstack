@@ -5,7 +5,6 @@ import { Persona } from '../modelos/persona';
 
 
 const cabecera = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-//const cabeceraMultipart = { headers: new HttpHeaders({ 'Content-Type': '') };
 
 
 @Injectable({
@@ -14,12 +13,14 @@ const cabecera = { headers: new HttpHeaders({ 'Content-Type': 'application/json'
 
 export class DatosPortfolioService {
 
-  usuarioURL = 'https://portfolio-web-back.herokuapp.com/api/usuarios/';
+  private usuarioURL = 'https://portfolio-web-back.herokuapp.com/api/usuarios/';
+
+  //private usuarioURL = 'http://localhost:8080/api/usuarios/';
+
 
 
   constructor(private httpClient: HttpClient) { }
 
-  /////////////////////////////////////  CRUD PERSONA   /////////////////////////////////////////
 
   public obtenerDatosPersonalesPorUsuario(nombreUsuario: string): Observable<Persona> {
     return this.httpClient.get<Persona>(this.usuarioURL + `username/${nombreUsuario}`, cabecera);
@@ -51,26 +52,13 @@ export class DatosPortfolioService {
   }
 
 
-
-  ////////////////////////////////////  IMAGENES  ////////////////////////////
-
   public uploadFotoPerfil(imagenFormData: any, nombreUsuario: string): Observable<any> {
     return this.httpClient.post<any>(this.usuarioURL + `datos_personales/foto_perfil/actualizar/${nombreUsuario}`, imagenFormData, { observe: 'response' });
   }
 
-  public obtenerFotoPerfilPorUsuario(nombreUsuario: string): Observable<any> {
-    return this.httpClient.get(this.usuarioURL + `datos_personales/foto_perfil/obtener/${nombreUsuario}`, { responseType: 'blob' });
-
-  }
 
   public uploadImgBg(imagenFormData: any, nombreUsuario: string): Observable<any> {
     return this.httpClient.post<any>(this.usuarioURL + `datos_personales/img_bg/actualizar/${nombreUsuario}`, imagenFormData, { observe: 'response' });
   }
-
-  public obtenerImgBgPorUsuario(nombreUsuario: string): Observable<any> {
-    return this.httpClient.get(this.usuarioURL + `datos_personales/img_bg/obtener/${nombreUsuario}`, { responseType: 'blob' });
-
-  }
-
 
 }

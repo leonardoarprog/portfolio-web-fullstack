@@ -15,11 +15,11 @@ const cabecera = { headers: new HttpHeaders({ 'Content-Type': 'application/json'
 })
 export class SobreMiFormService {
 
- 
-
-  private usuarioURL = 'https://portfolio-web-back.herokuapp.com/api/usuarios/'; 
 
 
+  private usuarioURL = 'https://portfolio-web-back.herokuapp.com/api/usuarios/';
+
+  //private usuarioURL = 'http://localhost:8080/api/usuarios/';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -49,7 +49,7 @@ export class SobreMiFormService {
     return this.httpClient.get<Ubicacion>(busquedaLocalidadesUrl);
 
   }
- 
+
 
 
 }

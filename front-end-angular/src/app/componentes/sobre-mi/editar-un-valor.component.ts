@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Persona } from 'src/app/modelos/persona';
 import { DatosPortfolioService } from 'src/app/servicios/datos-portfolio.service';
 import { ModalComponent } from '../modal/modal.component';
 
@@ -17,10 +18,11 @@ export class EditarUnValorComponent implements OnInit {
     private personaServicio: DatosPortfolioService,
     private activatedRoute: ActivatedRoute,
     private toastr: ToastrService,
+    private router: Router,
   ) { }
 
-
-  dbValor: any;
+  sobreMi!: Persona;
+  dbValor!: any;
   valorParaEditar!: string | null;
   errorMsj: any;
 
@@ -32,11 +34,20 @@ export class EditarUnValorComponent implements OnInit {
 
     const nombre_usuario = this.activatedRoute.snapshot.parent?.children[0].params['nombreUsuario'];
 
-    this.personaServicio.obtenerSobreMi(nombre_usuario).subscribe(
-      data => {
-        this.dbValor = data
-      }
-    );
+    this.personaServicio.obtenerDatosPersonalesPorUsuario(nombre_usuario).subscribe({
+      next: data => {
+
+       
+        this.dbValor = data.sobreMi;
+        console.log("DBVALOR :" + this.dbValor )
+
+      },
+      error: _err => {
+        this.router.navigate(['']);
+      },
+    });
+
+  
   }
 
   updateValor() {
@@ -46,7 +57,7 @@ export class EditarUnValorComponent implements OnInit {
 
   updateSobreMi(): void {
     const nombre_usuario = this.activatedRoute.snapshot.parent?.children[0].params['nombreUsuario'];
-    this.personaServicio.actualizarSobreMi(this.dbValor.valor, nombre_usuario).subscribe({
+    this.personaServicio.actualizarSobreMi(this.dbValor, nombre_usuario).subscribe({
       next: () => {
         this.modalUpdate.onCloseAfterUpdate()
         this.toastr.success('Datos actualizados correctamente', 'OK', {

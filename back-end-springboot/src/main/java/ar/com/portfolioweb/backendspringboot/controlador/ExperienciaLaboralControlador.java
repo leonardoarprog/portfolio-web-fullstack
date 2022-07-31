@@ -40,7 +40,8 @@ import ar.com.portfolioweb.backendspringboot.servicio.TipoEmpleoServicio;
 
 @Controller
 @RequestMapping("/api/usuarios/exp_laborales")
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://portfolio-web-front.web.app")
 public class ExperienciaLaboralControlador {
 
     @Autowired

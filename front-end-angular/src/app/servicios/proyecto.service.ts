@@ -10,18 +10,11 @@ const cabecera = { headers: new HttpHeaders({ 'Content-Type': 'application/json'
 })
 export class ProyectoService {
 
-  usuarioURL = 'https://portfolio-web-back.herokuapp.com/api/usuarios/';
+  private usuarioURL = 'https://portfolio-web-back.herokuapp.com/api/usuarios/';
 
-
+  //private usuarioURL = 'http://localhost:8080/api/usuarios/';
 
   constructor(private httpClient: HttpClient) { }
-
-
-  ////////////////////////////////////   CRUD EXPERIENCIAS LABORALES  ////////////////////////////
-
-  /* public crearExpLaboral(uploadData: any, nombreUsuario: string): Observable<any> {
-    return this.httpClient.post<any>(this.usuarioURL + `exp_laborales/exp_lab/crear/${nombreUsuario}`, uploadData, { observe: 'response' });
-  } */
 
 
   public crearProyecto(formData: FormData, nombreUsuario: string): Observable<any> {
@@ -30,23 +23,15 @@ export class ProyectoService {
     }));
   }
 
-  /*public crearExpLaboral(formData: FormData, nombreUsuario: string): Observable<any> {
-     return this.httpClient.post(this.usuarioURL + `exp_laborales/exp_lab/crear/${nombreUsuario}`, formData,  { observe: 'response' }
-   );
-   }*/
-
-
   public borrarProyecto(idExpLab: number): Observable<any> {
     return this.httpClient.delete<any>(this.usuarioURL + `proyectos/proyecto/delete/${idExpLab}`, cabecera);
   }
-
 
   public actualizarProyecto(formData: FormData, idProyecto: number): Observable<any> {
     return this.httpClient.post(this.usuarioURL + `proyectos/proyecto/update/${idProyecto}`, formData, { observe: 'response' }).pipe(map((data: any) => {
       return data;
     }));
   }
-
 
   public obtenerProyectosPorId(id: number): Observable<Proyecto> {
     return this.httpClient.get<Proyecto>(this.usuarioURL + `proyectos/proyecto/edit/${id}`, cabecera);

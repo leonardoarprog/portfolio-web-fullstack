@@ -38,7 +38,8 @@ import ar.com.portfolioweb.backendspringboot.servicio.ProyectoServicio;
 
 @Controller
 @RequestMapping("/api/usuarios/proyectos")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://portfolio-web-front.web.app")
+//@CrossOrigin(origins = "http://localhost:4200")
 public class ProyectoControlador {
 
     @Autowired

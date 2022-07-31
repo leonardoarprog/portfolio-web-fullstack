@@ -16,7 +16,8 @@ import ar.com.portfolioweb.backendspringboot.servicio.CategoriaHabilidadServicio
 
 @Controller
 @RequestMapping("/api/usuarios")
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://portfolio-web-front.web.app")
 
 public class CategoriaHabilidadControlador {
 

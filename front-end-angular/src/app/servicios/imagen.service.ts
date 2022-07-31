@@ -8,7 +8,9 @@ import { Observable } from 'rxjs';
 })
 export class ImagenService {
 
-  usuarioURL = 'https://portfolio-web-back.herokuapp.com/api/usuarios/';
+  private usuarioURL = 'https://portfolio-web-back.herokuapp.com/api/usuarios/';
+
+  //private usuarioURL = 'http://localhost:8080/api/usuarios/';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -18,7 +20,7 @@ export class ImagenService {
   }
 
 
-  public obtenerImagen(imagen:any):Observable<any> {
+  public obtenerImagen(imagen: any): Observable<any> {
     return this.httpClient.get(this.usuarioURL + `get/imagen/` + imagen);
 
   }
