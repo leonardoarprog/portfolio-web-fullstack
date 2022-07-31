@@ -14,7 +14,7 @@ const cabecera = { headers: new HttpHeaders({ 'Content-Type': 'application/json'
 
 export class DatosPortfolioService {
 
-  usuarioURL = 'http://localhost:8080/api/usuarios/';
+  usuarioURL = 'https://portfolio-web-back.herokuapp.com/api/usuarios/';
 
 
   constructor(private httpClient: HttpClient) { }

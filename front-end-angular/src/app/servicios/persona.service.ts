@@ -12,7 +12,7 @@ const cabecera = { headers: new HttpHeaders({ 'Content-Type': 'application/json'
 
 export class PersonaService {
 
-  personaURL = 'http://localhost:8080/api/usuarios/';
+  personaURL = 'https://portfolio-web-back.herokuapp.com/api/usuarios/';
 
   constructor(private httpClient: HttpClient) { }
 

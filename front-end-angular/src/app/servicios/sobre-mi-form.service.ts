@@ -17,7 +17,7 @@ export class SobreMiFormService {
 
  
 
-  private usuarioURL = 'http://localhost:8080/api/usuarios/'; 
+  private usuarioURL = 'https://portfolio-web-back.herokuapp.com/api/usuarios/'; 
 
 
 
